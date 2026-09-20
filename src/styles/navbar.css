@@ -1,0 +1,156 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+  width: min(100% - 32px, var(--container-width));
+  min-height: 76px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--color-black);
+}
+
+.navbar-logo {
+  width: 52px;
+  height: 52px;
+
+  object-fit: contain;
+}
+
+.navbar-school-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-school-name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.navbar-school-location {
+  margin-top: 3px;
+
+  color: var(--color-text-light);
+  font-size: 13px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-nav a {
+  position: relative;
+
+  padding: 8px 0;
+
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 500;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-nav a:hover {
+  color: var(--color-primary);
+}
+
+.navbar-menu-button {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.navbar-menu-button span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin: 5px 0;
+
+  background: var(--color-black);
+}
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
+  .navbar-container {
+    min-height: 68px;
+  }
+
+  .navbar-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .navbar-school-name {
+    font-size: 16px;
+  }
+
+  .navbar-school-location {
+    font-size: 12px;
+  }
+
+  .navbar-menu-button {
+    display: block;
+  }
+
+  .navbar-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    padding: 12px 16px;
+
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  .navbar-nav.is-open {
+    display: flex;
+  }
+
+  .navbar-nav a {
+    padding: 12px 8px;
+  }
+}

@@ -1,9 +1,17 @@
+import Navbar from "./components/Navbar"
+
 function App() {
   return (
-    <div>
-      <h1>Sarvodaya Public School</h1>
-      <p>Welcome to Sarvodaya Digital.</p>
-    </div>
+    <>
+      <Navbar />
+
+      <main>
+        <section id="home">
+          <h1>Sarvodaya Public School</h1>
+          <p>Welcome to Sarvodaya Digital.</p>
+        </section>
+      </main>
+    </>
   )
 }
 
