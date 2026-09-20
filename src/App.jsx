@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
 
 function App() {
   return (
@@ -6,10 +7,7 @@ function App() {
       <Navbar />
 
       <main>
-        <section id="home">
-          <h1>Sarvodaya Public School</h1>
-          <p>Welcome to Sarvodaya Digital.</p>
-        </section>
+        <Hero />
       </main>
     </>
   )
