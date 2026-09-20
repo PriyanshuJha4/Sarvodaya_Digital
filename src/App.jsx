@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import About from "./components/About"
+import Academics from "./components/Academics"
+import Highlights from "./components/Highlights"
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Academics />
+        <Highlights />
       </main>
     </>
   )
