@@ -34,7 +34,7 @@ const galleryData = [
   {
     id: 5,
     image: students01,
-    title: "Candid School Moments",
+    title: "Candid School Moment",
     category: "Activities",
   },
   {
