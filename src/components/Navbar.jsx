@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import schoolData from "../data/schoolData"
 import schoolLogo from "../assets/optimized/school-logo.webp"
 import "../styles/navbar.css"
@@ -19,10 +19,22 @@ function Navbar() {
     setMenuOpen(false)
   }
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : ""
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [menuOpen])
+
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <a href="#home" className="navbar-brand" onClick={handleNavClick}>
+        <a
+          href="#home"
+          className="navbar-brand"
+          onClick={handleNavClick}
+        >
           <img
             src={schoolLogo}
             alt={`${schoolData.name} logo`}
@@ -33,6 +45,7 @@ function Navbar() {
             <span className="navbar-school-name">
               Sarvodaya Public School
             </span>
+
             <span className="navbar-school-location">
               Khajauli, Madhubani
             </span>
@@ -42,16 +55,24 @@ function Navbar() {
         <button
           type="button"
           className="navbar-menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={
+            menuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
           aria-expanded={menuOpen}
+          aria-controls="main-navigation"
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <nav className={`navbar-nav ${menuOpen ? "is-open" : ""}`}>
+        <nav
+          id="main-navigation"
+          className={`navbar-nav ${menuOpen ? "is-open" : ""}`}
+        >
           {navItems.map((item) => (
             <a
               key={item.href}
