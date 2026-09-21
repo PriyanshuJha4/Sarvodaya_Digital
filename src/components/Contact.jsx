@@ -40,7 +40,7 @@ function Contact() {
             className="contact-card"
             href={schoolData.location.googleMaps}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <span className="contact-label">Visit Us</span>
             <strong>{schoolData.location.address}</strong>
