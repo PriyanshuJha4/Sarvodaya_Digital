@@ -28,17 +28,53 @@ async function getImages(dir) {
   return files
 }
 
+function getExpectedOutput(input) {
+  const relativePath = path.relative(inputDir, input)
+  const parsed = path.parse(relativePath)
+
+  return path.join(
+    outputDir,
+    parsed.dir,
+    `${parsed.name}.webp`
+  )
+}
+
+function cleanOptimizedDirectory(expectedFiles) {
+  if (!fs.existsSync(outputDir)) return
+
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name)
+
+      if (entry.isDirectory()) {
+        walk(fullPath)
+      } else if (entry.isFile() && /\.webp$/i.test(entry.name)) {
+        if (!expectedFiles.has(path.resolve(fullPath))) {
+          fs.unlinkSync(fullPath)
+          console.log(
+            `Removed stale: ${path.relative(inputDir, fullPath)}`
+          )
+        }
+      }
+    }
+  }
+
+  walk(outputDir)
+}
+
 const files = await getImages(inputDir)
+
+const expectedOutputs = new Set(
+  files.map((file) => path.resolve(getExpectedOutput(file)))
+)
+
+cleanOptimizedDirectory(expectedOutputs)
 
 for (const input of files) {
   const relativePath = path.relative(inputDir, input)
   const parsed = path.parse(relativePath)
 
-  const output = path.join(
-    outputDir,
-    parsed.dir,
-    `${parsed.name}.webp`
-  )
+  const output = getExpectedOutput(input)
 
   fs.mkdirSync(path.dirname(output), { recursive: true })
 
