@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import galleryData from "../data/galleryData"
 import "../styles/gallery.css"
 
@@ -8,6 +8,26 @@ function Gallery() {
   const closeLightbox = () => {
     setSelectedImage(null)
   }
+
+  useEffect(() => {
+    if (!selectedImage) return
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeLightbox()
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [selectedImage])
 
   return (
     <section id="gallery" className="gallery-section">
@@ -34,8 +54,9 @@ function Gallery() {
               onClick={() => setSelectedImage(item)}
               role="button"
               tabIndex="0"
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault()
                   setSelectedImage(item)
                 }
               }}
@@ -58,6 +79,9 @@ function Gallery() {
         <div
           className="gallery-lightbox"
           onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedImage.title}
         >
           <button
             type="button"
@@ -70,7 +94,7 @@ function Gallery() {
 
           <div
             className="gallery-lightbox-content"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
           >
             <img
               src={selectedImage.image}
