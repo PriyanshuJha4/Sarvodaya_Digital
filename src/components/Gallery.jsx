@@ -1,7 +1,14 @@
+import { useState } from "react"
 import galleryData from "../data/galleryData"
 import "../styles/gallery.css"
 
 function Gallery() {
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  const closeLightbox = () => {
+    setSelectedImage(null)
+  }
+
   return (
     <section id="gallery" className="gallery-section">
       <div className="gallery-container">
@@ -21,7 +28,18 @@ function Gallery() {
 
         <div className="gallery-grid">
           {galleryData.map((item) => (
-            <article className="gallery-card" key={item.id}>
+            <article
+              className="gallery-card"
+              key={item.id}
+              onClick={() => setSelectedImage(item)}
+              role="button"
+              tabIndex="0"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  setSelectedImage(item)
+                }
+              }}
+            >
               <img
                 src={item.image}
                 alt={item.title}
@@ -35,6 +53,37 @@ function Gallery() {
           ))}
         </div>
       </div>
+
+      {selectedImage && (
+        <div
+          className="gallery-lightbox"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            className="gallery-lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close image"
+          >
+            ×
+          </button>
+
+          <div
+            className="gallery-lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.title}
+            />
+
+            <div className="gallery-lightbox-caption">
+              <span>{selectedImage.category}</span>
+              <h3>{selectedImage.title}</h3>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
