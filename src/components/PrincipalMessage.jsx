@@ -6,11 +6,19 @@ function PrincipalMessage() {
   return (
     <section className="principal-section">
       <div className="principal-container">
-        <div className="principal-photo">
-          <img
-            src={principalPhoto}
-            alt={`Principal ${schoolData.principal.name}`}
-          />
+
+        <div className="principal-left">
+          <div className="principal-photo">
+            <img
+              src={principalPhoto}
+              alt={`Principal ${schoolData.principal.name}`}
+            />
+          </div>
+
+          <div className="principal-info">
+            <strong>{schoolData.principal.name}</strong>
+            <span>Principal, {schoolData.name}</span>
+          </div>
         </div>
 
         <div className="principal-content">
@@ -26,12 +34,8 @@ function PrincipalMessage() {
             educational foundation, a positive learning environment,
             and the confidence to grow into a responsible individual.”
           </blockquote>
-
-          <div className="principal-info">
-            <strong>{schoolData.principal.name}</strong>
-            <span>Principal, {schoolData.name}</span>
-          </div>
         </div>
+
       </div>
     </section>
   )
