@@ -50,3 +50,11 @@ img {
 #root {
   min-height: 100vh;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
