@@ -1,4 +1,5 @@
 import schoolData from "../data/schoolData"
+import principalPhoto from "../assets/principal.jpg"
 import "../styles/principal.css"
 
 function PrincipalMessage() {
@@ -6,9 +7,10 @@ function PrincipalMessage() {
     <section className="principal-section">
       <div className="principal-container">
         <div className="principal-photo">
-          <div className="principal-photo-placeholder">
-            Principal
-          </div>
+          <img
+            src={principalPhoto}
+            alt={`Principal ${schoolData.principal.name}`}
+          />
         </div>
 
         <div className="principal-content">
