@@ -1,6 +1,6 @@
 import schoolData from "../data/schoolData"
 import socialData from "../data/socialData"
-import schoolLogo from "../assets/school-logo.png"
+import schoolLogo from "../assets/optimized/school-logo.webp"
 import "../styles/footer.css"
 
 function Footer() {

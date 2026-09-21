@@ -1,6 +1,6 @@
 import { useState } from "react"
 import schoolData from "../data/schoolData"
-import schoolLogo from "../assets/school-logo.png"
+import schoolLogo from "../assets/optimized/school-logo.webp"
 import "../styles/navbar.css"
 
 function Navbar() {

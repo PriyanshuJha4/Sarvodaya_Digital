@@ -1,5 +1,5 @@
 import schoolData from "../data/schoolData"
-import principalPhoto from "../assets/principal.jpg"
+import principalPhoto from "../assets/optimized/principal.webp"
 import "../styles/principal.css"
 
 function PrincipalMessage() {

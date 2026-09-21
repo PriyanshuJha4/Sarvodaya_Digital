@@ -1,5 +1,5 @@
 import schoolData from "../data/schoolData"
-import schoolLogo from "../assets/school-logo.png"
+import schoolLogo from "../assets/optimized/school-logo.webp"
 import "../styles/hero.css"
 
 function Hero() {

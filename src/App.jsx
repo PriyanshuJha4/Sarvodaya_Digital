@@ -3,9 +3,9 @@ import Hero from "./components/Hero"
 import About from "./components/About"
 import Academics from "./components/Academics"
 import Highlights from "./components/Highlights"
+import PrincipalMessage from "./components/PrincipalMessage"
 import Gallery from "./components/Gallery"
 import Events from "./components/Events"
-import PrincipalMessage from "./components/PrincipalMessage"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
@@ -19,9 +19,9 @@ function App() {
         <About />
         <Academics />
         <Highlights />
+        <PrincipalMessage />
         <Gallery />
         <Events />
-        <PrincipalMessage />
         <Contact />
       </main>
 
