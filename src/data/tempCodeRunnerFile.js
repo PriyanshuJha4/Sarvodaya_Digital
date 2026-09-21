@@ -4,7 +4,7 @@ import classroom01 from "../assets/optimized/gallery/classroom-01.webp"
 import students01 from "../assets/optimized/gallery/students-01.webp"
 import event01 from "../assets/optimized/gallery/event-01.webp"
 import activity01 from "../assets/optimized/gallery/activity-01.webp"
-import classroom02 from "../assets/optimized/gallery/classroom-02.webp"
+import classroom02 from "../assets/optimized/gallery/activity-02.webp"
 
 const galleryData = [
   {
@@ -34,13 +34,13 @@ const galleryData = [
   {
     id: 5,
     image: students01,
-    title: "Candid School Moments",
+    title: "Student Activities",
     category: "Activities",
   },
   {
     id: 6,
     image: activity01,
-    title: "Proud Prize Winners",
+    title: "Student Activity",
     category: "Activities",
   },
   {
